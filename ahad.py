@@ -1299,7 +1299,7 @@ def Subscraption():
 	key1=open('/data/data/com.termux/files/usr/bin/.mrahsan-cov', 'r').read()
 	clear()
 	print(logo)
-	r1=requests.get("https://github.com/Hackerrv33/mr.rahul/blob/ea5eff8be0b10a811ed0d61e70860c0b5b8d3f54/Server.txt?
+	r1=requests.get("https://github.com/Hackerrv33/mr.rahul/server.txt
 	if key1 in r1:
 		os.system('clear')
 		print(logo)
